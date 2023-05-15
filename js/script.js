@@ -68,5 +68,46 @@ request.open('GET', ' https://jsonplaceholder.typicode.com/todos/');//this is ju
 request.send();
 
 
+//STATUS CODES
+//Checking the state of the request is not enough,lets say there is an error,like a misspelled endpoint, that the state is not able to catch,we shouls also check the status code to be sure our request is fully successful, there are various types of status codes ranges from mdn docs
+/* 
+Informational responses (100 – 199)
+Successful responses (200 – 299)
+Redirection messages (300 – 399)
+Client error responses (400 – 499)
+Server error responses (500 – 599)
+*/
+
+//200 status code is the expected code for a successful request from the client side
+
+request.addEventListener('readystatechange', ()=>{
+    if(request.readyState === 4 && request.status === 200) {
+            console.log(request.responseText);//.responseText is the property containing the response data from the server, the console returns a json file
+         }
+         else if(request.readyState === 4){
+            console.log('error making a request');
+         }
+});
+
+request.open('GET', ' https://jsonplaceholder.typicode.com/todos/');//this is just setting up the request , to send it, we use the .send() method
+
+
+
+request.send();
+
+
+
+
+//EXAMPLE WITH A MISPELLED ENDPOINT
+/* 
+request.open('GET', ' https://jsonplaceholder.typicode.com/todosS/');//this is just setting up the request , to send it, we use the .send() method
+
+
+
+request.send();
+ */
+
+
+
 
 

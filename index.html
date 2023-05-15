@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async JS</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <main>
+        <section>
+            <h1>ASYNC VS SYNC IN JS</h1>
+            <p>Governs how we perform tasks which take some time to complete. Js is synchronous in nature, that is it runs from top to bottom , one line after another.This, however has its own drawbacks, look at a scenerio where we nned to make network request to a database on another server, this could take sometime to complete, this action will block the rest of the code from running making the system inefficient as its not the best, hence the need for asyncronous functionality.
+            <br>
+            <p>That brings us to the use async function which basically start something now and finish later, allowing the code of blocks that follw it to continure running</p>
+            <br>
+            <p>We normally pass a callback function inside of the async function as a parameter, this callback function is what runs and finishes the code of block </p>
+            <br>
+            <p></p>
+            </p>
+            <h2>HTTP NETWORK REQUEST</h2>
+            <p>We make http requests to get data from another server, we make these request to API endpoints, for example we may have a weather api which has API endpoints that we can use to acces data from that weather database, the weather database will then send us the requested data as a response</p>
+            <p>The response data in sent back in JSON format.</p>
+        </section>
+    </main>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@ console.log(2);
 
 
 setTimeout(() =>{
-    console.log('callback function fired');
+    console.log('fire me after 2000 milliseconds to demo the async nature of callback functions in javascript');
 },2000);
 
 console.log(3);
@@ -114,6 +114,30 @@ request.send();
 //Callback Functions
 //It would be nice for us to wrap the making of a request code inside one fn so that anytime we need to make a request we would jus call the fn
 
+//Nesting a function inside of another function as an arguement is what a callback function is
+
+//basic syntax of a callback function
+
+function firstFunc(parameter1,callback){
+    //do stuff
+    callback();
+}
+
+//Example 
+
+function one (callTwo){
+    console.log('Call me first,then call step 2');
+    callTwo();
+};
+
+function two (){
+    console.log('Call me second');
+};
+
+one(two);//
+
+
+
 const makeRequest = () => {
     const request1 =new XMLHttpRequest();
 
@@ -125,7 +149,7 @@ request1.addEventListener('readystatechange', ()=>{
          }
 });
 
-request1.open('GET', 'https://jsonplaceholder.typicode.com/todos/');
+request1.open('GET', 'https://jsonplaceholder.typicode.com/todos/1');
 
 request1.send();
 };
@@ -134,8 +158,45 @@ request1.send();
 makeRequest();
 
  
+//(passing the callback fn  as a parameter)
+const makeRequest1 = (callback) => {
+    const request2 =new XMLHttpRequest();
+
+request2.addEventListener('readystatechange', ()=>{
+    if(request2.readyState === 4 && request2.status === 200) {
+            callback(undefined, request2.responseText);
+    }else if(request2.readyState === 4){
+            callback("error encounterd",undefined);
+         }
+});
+
+request2.open('GET', 'https://jsonplaceholder.typicode.com/todoss/1');
+
+request2.send();
+};
+
+//passing the callback function as an arguement 
+//makeRequest1(() =>{
+ //   console.log('callback fired')//console returns callback fired
+//});
+
+/* The problem with this code is that the callback will still be fired even if we encounter an error,to combat this, we need to pass in two parameters into the callback function err, and data. we normally do the err first then the data second,that is convention*/
+
+makeRequest1((err,data) =>{
+    console.log('callback fired');
+    //console.log(err,data);
+    if(err){
+        console.log(err);
+    }else{
+        console.log(data);
+    };
+})
 
 
+/* to have a clear demo of async and sync nature of javascript and callback functions */
+console.log(6);
+console.log(7);
+console.log(8);
 
 
 

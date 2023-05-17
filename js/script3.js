@@ -260,6 +260,18 @@ makeRequest2((err,data) =>{
 });
 
 
+//CALLBACK HELL-lets we want to make several requests to different databases and each request depands on the previous request to execute, our code sample would resemble sth this below, this is what i  call a spagetti code aka callback function
+
+firstFunction(parameter,function(){
+    //do something
+    secondFunction(parameter,function(){
+        //do something
+        thirdFunction(parameter,function(){
+            //do something
+        });
+    });
+});
+
 
 
 

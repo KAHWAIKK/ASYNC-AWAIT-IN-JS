@@ -95,9 +95,6 @@ request.open('GET', ' https://jsonplaceholder.typicode.com/todos/');//this is ju
 
 request.send();
 
-
-
-
 //EXAMPLE WITH A MISPELLED ENDPOINT
 /* 
 request.open('GET', ' https://jsonplaceholder.typicode.com/todosS/');//this is just setting up the request , to send it, we use the .send() method
